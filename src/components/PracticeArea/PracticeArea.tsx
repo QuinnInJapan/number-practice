@@ -18,7 +18,7 @@ const validator = new Validator(converter);
 
 export function PracticeArea() {
   const { state, dispatch } = useAppContext();
-  const { playNumber } = useAudioPlayer();
+  const { playNumber, stop: stopAudio } = useAudioPlayer();
   const { listen, stop, restart, isListening } = useSpeechRecognition();
   const numberGenerator = useNumberGenerator();
   const progressService = useProgressService();
@@ -28,6 +28,8 @@ export function PracticeArea() {
   const { analyserRef } = useMicrophone(isRecording);
   const [showHeatmap, setShowHeatmap] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
+  const [noSpeechFlash, setNoSpeechFlash] = useState(false);
+  const abortRef = useRef(false);
 
   const doRecordAndValidate = useCallback(async (number: number) => {
     dispatch({ type: 'START_RECORDING' });
@@ -35,8 +37,13 @@ export function PracticeArea() {
     try {
       const transcript = await listen(state.answerLanguage!);
 
-      // If empty transcript (user stopped early or no speech detected), go back to ready
+      // If aborted (level/mode switch mid-recording), silently discard
+      if (abortRef.current) return;
+
+      // If empty transcript (user stopped early or no speech detected), flash a message
       if (!transcript.trim()) {
+        setNoSpeechFlash(true);
+        setTimeout(() => setNoSpeechFlash(false), 2000);
         dispatch({ type: 'NEXT_QUESTION' });
         return;
       }
@@ -73,6 +80,7 @@ export function PracticeArea() {
   }, [state.answerLanguage, state.currentLevelId, state.mode, dispatch, listen, progressService]);
 
   const startQuestion = useCallback(async () => {
+    abortRef.current = false;
     try {
       const number = numberGenerator.generateForLevel(state.currentLevelId);
 
@@ -80,6 +88,9 @@ export function PracticeArea() {
 
       // Play audio
       await playNumber(number, state.questionLanguage!);
+
+      // If aborted during audio playback (level/mode switch), bail out
+      if (abortRef.current) return;
 
       // Auto-start recording after audio finishes
       await doRecordAndValidate(number);
@@ -104,16 +115,21 @@ export function PracticeArea() {
   const replayAudio = useCallback(async () => {
     if (!state.currentNumber || !state.questionLanguage) return;
     try {
+      // Stop mic so it doesn't pick up the playback audio
+      stop();
       await playNumber(state.currentNumber, state.questionLanguage);
+      // Restart recording after playback
+      restart();
+      setRetryCount(c => c + 1);
     } catch (error) {
       dispatch({
         type: 'SET_ERROR',
         payload: { message: (error as Error).message, isFatal: false }
       });
     }
-  }, [state.currentNumber, state.questionLanguage, playNumber, dispatch]);
+  }, [state.currentNumber, state.questionLanguage, playNumber, dispatch, stop, restart]);
 
-  // Auto-start next question after feedback auto-advance
+  // Auto-start next question after feedback auto-advance, and clean up on level/mode switch
   const prevStateRef = useRef(state.currentState);
   useEffect(() => {
     const prev = prevStateRef.current;
@@ -122,7 +138,14 @@ export function PracticeArea() {
     if (state.currentState === 'READY' && prev === 'FEEDBACK') {
       startQuestion();
     }
-  }, [state.currentState, startQuestion]);
+
+    // Clean up if level/mode switch happened mid-recording or mid-playback
+    if (state.currentState === 'READY' && (prev === 'LISTENING' || prev === 'SPEAKING')) {
+      abortRef.current = true;
+      stop();
+      stopAudio();
+    }
+  }, [state.currentState, startQuestion, stop, stopAudio]);
 
   // Auto-cutoff: stop recording after timeout expires
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -203,6 +226,10 @@ export function PracticeArea() {
             </span>
           )}
         </div>
+      )}
+
+      {noSpeechFlash && (
+        <div className="no-speech-flash">{t('feedback.noSpeechDetected')}</div>
       )}
 
       <div className="unlock-progress">

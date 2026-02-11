@@ -72,6 +72,8 @@ export const translations = {
     'feedback.stayOn': 'Stay on {levelName}',
     'feedback.streakProgress': '{current}/{required} to unlock {levelName}',
     'feedback.streakReset': 'Streak reset — 0/{required} to unlock {levelName}',
+    'feedback.streakLost': 'Lost {lost} streak — 0/{required} to unlock {levelName}',
+    'feedback.noSpeechDetected': 'No speech detected — try again',
 
     // Heatmap
     'heatmap.title': 'Practice History',
@@ -178,6 +180,8 @@ export const translations = {
     'feedback.stayOn': '{levelName}を続ける',
     'feedback.streakProgress': '{current}/{required} → {levelName}解放',
     'feedback.streakReset': '連続正解リセット — 0/{required} → {levelName}解放',
+    'feedback.streakLost': '{lost}連続を失いました — 0/{required} → {levelName}解放',
+    'feedback.noSpeechDetected': '音声が検出されませんでした — もう一度お試しください',
 
     // Heatmap
     'heatmap.title': '練習履歴',

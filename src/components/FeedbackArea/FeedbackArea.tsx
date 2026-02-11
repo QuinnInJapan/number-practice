@@ -30,7 +30,13 @@ export function FeedbackArea() {
     : null;
 
   const currentLevel = levelService.getLevelById(state.currentLevelId);
-  const justUnlocked = unlockDetail?.streak.met ?? false;
+
+  // Only show the unlock celebration when the streak JUST reached the target
+  // on this answer (not on every subsequent correct answer after mastery).
+  const isCorrect = state.validationResult?.isCorrect ?? false;
+  const justUnlocked = isCorrect
+    && unlockDetail !== null
+    && unlockDetail.streak.current === unlockDetail.streak.required;
 
   const cancelAutoAdvance = useCallback(() => {
     if (autoAdvanceRef.current) {
@@ -40,7 +46,6 @@ export function FeedbackArea() {
     setAutoAdvanceCancelled(true);
   }, []);
 
-  const isCorrect = state.validationResult?.isCorrect ?? false;
   const autoAdvanceMs = isCorrect ? AUTO_ADVANCE_CORRECT_MS : AUTO_ADVANCE_INCORRECT_MS;
 
   // Auto-advance to next question (skip when a level was just unlocked)
@@ -233,7 +238,9 @@ export function FeedbackArea() {
               <span className="req-icon">{result.isCorrect ? '🔥' : '○'}</span>
               {result.isCorrect
                 ? t('feedback.streakProgress', { current: unlockDetail.streak.current, required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })
-                : t('feedback.streakReset', { required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })
+                : state.sessionStats.previousStreak >= 3
+                  ? t('feedback.streakLost', { lost: state.sessionStats.previousStreak, required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })
+                  : t('feedback.streakReset', { required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })
               }
             </div>
           )}

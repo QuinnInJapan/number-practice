@@ -23,6 +23,8 @@ const initialSessionStats: SessionStats = {
   attempts: 0,
   correct: 0,
   streak: 0,
+  bestStreak: 0,
+  previousStreak: 0,
 };
 
 function generateSessionId(): string {
@@ -129,12 +131,17 @@ export function appReducer(state: ApplicationState, action: AppAction): Applicat
 
     case 'UPDATE_SESSION_STATS': {
       const { isCorrect } = action.payload;
+      const newStreak = isCorrect ? state.sessionStats.streak + 1 : 0;
       return {
         ...state,
         sessionStats: {
           attempts: state.sessionStats.attempts + 1,
           correct: state.sessionStats.correct + (isCorrect ? 1 : 0),
-          streak: isCorrect ? state.sessionStats.streak + 1 : 0,
+          streak: newStreak,
+          bestStreak: Math.max(state.sessionStats.bestStreak, newStreak),
+          previousStreak: !isCorrect && state.sessionStats.streak > 0
+            ? state.sessionStats.streak
+            : state.sessionStats.previousStreak,
         },
       };
     }

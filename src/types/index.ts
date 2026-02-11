@@ -57,6 +57,9 @@ export interface SessionStats {
   attempts: number;
   correct: number;
   streak: number;
+  bestStreak: number;
+  /** Streak before it was last broken (0 if not broken yet) */
+  previousStreak: number;
 }
 
 // Full application state

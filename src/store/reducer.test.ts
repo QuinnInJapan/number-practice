@@ -90,7 +90,7 @@ describe('appReducer', () => {
         payload: { levelId: 'sen' }
       });
 
-      expect(result.sessionStats).toEqual({ attempts: 0, correct: 0, streak: 0 });
+      expect(result.sessionStats).toEqual({ attempts: 0, correct: 0, streak: 0, bestStreak: 0, previousStreak: 0 });
     });
   });
 
