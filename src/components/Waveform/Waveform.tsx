@@ -6,37 +6,65 @@ interface WaveformProps {
   active: boolean;
 }
 
+const BAR_WIDTH = 3;
+const BAR_GAP = 2;
+const SAMPLE_INTERVAL_MS = 50;
+
 export function Waveform({ analyserRef, active }: WaveformProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rafRef = useRef(0);
+  const barsRef = useRef<number[]>([]);
+  const lastSampleRef = useRef(0);
 
   useEffect(() => {
-    if (!active) return;
+    if (!active) {
+      barsRef.current = [];
+      return;
+    }
 
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Resolve CSS variables for theming
     const style = getComputedStyle(canvas);
     const color = style.getPropertyValue('--color-primary').trim() || '#d48a18';
 
-    function draw() {
+    function draw(time: number) {
       rafRef.current = requestAnimationFrame(draw);
 
       const analyser = analyserRef.current;
       if (!analyser || !canvas || !ctx) return;
 
-      const bufferLength = analyser.fftSize;
-      const dataArray = new Uint8Array(bufferLength);
-      analyser.getByteTimeDomainData(dataArray);
+      // Sample volume at fixed intervals
+      if (time - lastSampleRef.current >= SAMPLE_INTERVAL_MS) {
+        lastSampleRef.current = time;
 
+        const dataArray = new Uint8Array(analyser.fftSize);
+        analyser.getByteTimeDomainData(dataArray);
+
+        // Compute RMS volume
+        let sum = 0;
+        for (let i = 0; i < dataArray.length; i++) {
+          const v = (dataArray[i] - 128) / 128;
+          sum += v * v;
+        }
+        const rms = Math.sqrt(sum / dataArray.length);
+        const volume = Math.min(rms / 0.35, 1);
+
+        // Calculate max bars that fit
+        const maxBars = Math.floor(canvas.clientWidth / (BAR_WIDTH + BAR_GAP));
+        barsRef.current.push(volume);
+        if (barsRef.current.length > maxBars) {
+          barsRef.current.shift();
+        }
+      }
+
+      // Draw
       const dpr = window.devicePixelRatio || 1;
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
 
-      // Size canvas backing store for sharp rendering
       if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
         canvas.width = width * dpr;
         canvas.height = height * dpr;
@@ -45,28 +73,31 @@ export function Waveform({ analyserRef, active }: WaveformProps) {
 
       ctx.clearRect(0, 0, width, height);
 
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = color;
-      ctx.beginPath();
+      const bars = barsRef.current;
+      const totalBarWidth = BAR_WIDTH + BAR_GAP;
+      const centerY = height / 2;
+      const minBarHeight = 2;
+      const maxBarHeight = height * 0.9;
 
-      const sliceWidth = width / (bufferLength - 1);
-      let x = 0;
+      // Draw bars right-aligned (newest on right)
+      const startX = width - bars.length * totalBarWidth;
 
-      for (let i = 0; i < bufferLength; i++) {
-        const v = dataArray[i] / 128.0; // 0–2 centered at 1
-        const y = (v * height) / 2;
+      ctx.fillStyle = color;
 
-        if (i === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-        x += sliceWidth;
+      for (let i = 0; i < bars.length; i++) {
+        const barHeight = Math.max(minBarHeight, bars[i] * maxBarHeight);
+        const x = startX + i * totalBarWidth;
+        const y = centerY - barHeight / 2;
+
+        // Rounded bars via small radius
+        const radius = BAR_WIDTH / 2;
+        ctx.beginPath();
+        ctx.roundRect(x, y, BAR_WIDTH, barHeight, radius);
+        ctx.fill();
       }
-
-      ctx.stroke();
     }
 
+    lastSampleRef.current = 0;
     rafRef.current = requestAnimationFrame(draw);
 
     return () => {
