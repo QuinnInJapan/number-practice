@@ -73,7 +73,7 @@ export function useAudioPlayer() {
     const extensions = ['mp3', 'wav'];
 
     for (const ext of extensions) {
-      const audioPath = `/audio/${number}_${language}.${ext}`;
+      const audioPath = `${import.meta.env.BASE_URL}audio/${number}_${language}.${ext}`;
       const success = await tryPlayPath(audioPath);
       if (success) {
         return true;
