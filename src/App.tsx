@@ -6,7 +6,6 @@ import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
 import { ModeSelection } from './components/ModeSelection/ModeSelection';
 import { LevelSelection } from './components/LevelSelection';
 import { PracticeArea } from './components/PracticeArea/PracticeArea';
-import { FeedbackArea } from './components/FeedbackArea/FeedbackArea';
 import { ErrorDisplay } from './components/ErrorDisplay/ErrorDisplay';
 import './styles/App.css';
 
@@ -69,10 +68,6 @@ function AppContent() {
 
         <ErrorBoundary name="PracticeArea">
           <PracticeArea />
-        </ErrorBoundary>
-
-        <ErrorBoundary name="FeedbackArea">
-          <FeedbackArea />
         </ErrorBoundary>
 
         <ErrorDisplay />
