@@ -126,6 +126,23 @@ export function PracticeNav() {
           </div>
         )}
       </div>
+
+      {state.sessionStats.attempts > 0 && (
+        <div className="nav-stats">
+          <span className="nav-stat-item">
+            {t('practice.correct', {
+              correct: state.sessionStats.correct,
+              total: state.sessionStats.attempts,
+              accuracy: Math.round((state.sessionStats.correct / state.sessionStats.attempts) * 100),
+            })}
+          </span>
+          {state.sessionStats.streak > 1 && (
+            <span className="nav-stat-item streak">
+              {t('practice.streak', { count: state.sessionStats.streak })}
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -71,76 +71,6 @@
   transform: translateY(-1px);
 }
 
-/* === SESSION STATS === */
-.session-stats {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
-  padding: var(--spacing-sm) var(--spacing-md);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-}
-
-.stat-item {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  background: var(--color-surface-elevated);
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--color-border);
-}
-
-.stat-item.streak {
-  background: linear-gradient(135deg, var(--color-streak-start), var(--color-streak-end));
-  color: white;
-  font-weight: 600;
-  border: none;
-  animation: streakGlow 2s ease-in-out infinite;
-}
-
-@keyframes streakGlow {
-  0%, 100% { box-shadow: none; }
-  50% { box-shadow: 0 0 12px rgba(249, 115, 22, 0.3); }
-}
-
-/* === UNLOCK PROGRESS === */
-.unlock-progress {
-  text-align: center;
-  margin-bottom: var(--spacing-md);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-dim);
-}
-
-.unlock-pending {
-  display: inline-block;
-  padding: var(--spacing-xs) var(--spacing-md);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-}
-
-.unlock-done {
-  display: inline-block;
-  padding: var(--spacing-xs) var(--spacing-md);
-  background: var(--color-success-dim);
-  border: 1px solid var(--color-success);
-  border-radius: var(--radius-pill);
-  color: var(--color-success);
-  font-weight: 600;
-}
-
-.unlock-final {
-  display: inline-block;
-  padding: var(--spacing-xs) var(--spacing-md);
-  background: var(--color-primary-dim);
-  border: 1px solid var(--color-primary);
-  border-radius: var(--radius-pill);
-  color: var(--color-primary);
-  font-weight: 600;
-}
-
 /* === QUESTION CONTAINER === */
 .question-container {
   background: var(--color-surface);
@@ -393,11 +323,10 @@
 
 /* === FEEDBACK PROGRESS === */
 .feedback-progress-section {
-  padding: var(--spacing-md);
-  background: var(--color-surface-elevated);
-  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) 0 0;
+  margin-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
   text-align: center;
-  margin-bottom: var(--spacing-xl);
 }
 
 .feedback-req {

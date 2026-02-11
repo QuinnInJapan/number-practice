@@ -143,6 +143,35 @@
   font-size: 0.65rem;
 }
 
+/* === SESSION STATS === */
+.nav-stats {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding-top: var(--spacing-xs);
+  border-top: 1px solid var(--color-border);
+}
+
+.nav-stat-item {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+  padding: 2px var(--spacing-sm);
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-pill);
+}
+
+.nav-stat-item.streak {
+  background: linear-gradient(135deg, var(--color-streak-start), var(--color-streak-end));
+  color: white;
+  font-weight: 600;
+  animation: navStreakGlow 2s ease-in-out infinite;
+}
+
+@keyframes navStreakGlow {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 8px rgba(249, 115, 22, 0.3); }
+}
+
 @media (max-width: 600px) {
   .practice-nav {
     padding: var(--spacing-xs) var(--spacing-sm);

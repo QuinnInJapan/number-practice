@@ -289,10 +289,6 @@ export function PracticeArea() {
   };
 
   const status = getStatusContent();
-  const { sessionStats } = state;
-  const accuracy = sessionStats.attempts > 0
-    ? Math.round((sessionStats.correct / sessionStats.attempts) * 100)
-    : 0;
 
   // Feedback formatting helpers (only used when in FEEDBACK state with a valid number)
   const formatNumber = (num: number, lang: 'ja' | 'en') =>
@@ -352,33 +348,8 @@ export function PracticeArea() {
     <div className="practice-area">
       <PracticeNav />
 
-      {sessionStats.attempts > 0 && (
-        <div className="session-stats">
-          <span className="stat-item">
-            {t('practice.correct', { correct: sessionStats.correct, total: sessionStats.attempts, accuracy })}
-          </span>
-          {sessionStats.streak > 1 && (
-            <span className="stat-item streak">
-              {t('practice.streak', { count: sessionStats.streak })}
-            </span>
-          )}
-        </div>
-      )}
-
       {noSpeechFlash && (
         <div className="no-speech-flash">{t('feedback.noSpeechDetected')}</div>
-      )}
-
-      {!isFeedback && (
-        <div className="unlock-progress">
-          {unlockDetail ? (
-            unlockDetail.streak.met
-              ? <span className="unlock-done">{t('practice.unlockDone', { levelName: getNextLevelDisplayName() })}</span>
-              : <span className="unlock-pending">{t('practice.unlockPending', { current: unlockDetail.streak.current, required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })}</span>
-          ) : (
-            <span className="unlock-final">{t('practice.finalLevel')}</span>
-          )}
-        </div>
       )}
 
       <div className={containerClasses}>
@@ -443,30 +414,30 @@ export function PracticeArea() {
             />
           </div>
         )}
+
+        {/* Streak/unlock progress during feedback */}
+        {isFeedback && unlockDetail && !justUnlocked && (
+          <div className="feedback-progress-section">
+            <div className={`feedback-req ${isCorrect ? 'met' : 'bottleneck'}`}>
+              <span className="req-icon">{isCorrect ? '🔥' : '○'}</span>
+              {isCorrect
+                ? t('feedback.streakProgress', { current: unlockDetail.streak.current, required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })
+                : state.sessionStats.previousStreak >= 3
+                  ? t('feedback.streakLost', { lost: state.sessionStats.previousStreak, required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })
+                  : t('feedback.streakReset', { required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })
+              }
+            </div>
+          </div>
+        )}
+
+        {isFeedback && justUnlocked && unlockDetail && (
+          <div className="feedback-progress-section">
+            <div className="feedback-unlock-message">
+              {t('feedback.levelUnlocked', { levelName: getNextLevelDisplayName() })}
+            </div>
+          </div>
+        )}
       </div>
-
-      {/* Streak/unlock progress during feedback */}
-      {isFeedback && unlockDetail && !justUnlocked && (
-        <div className="feedback-progress-section">
-          <div className={`feedback-req ${isCorrect ? 'met' : 'bottleneck'}`}>
-            <span className="req-icon">{isCorrect ? '🔥' : '○'}</span>
-            {isCorrect
-              ? t('feedback.streakProgress', { current: unlockDetail.streak.current, required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })
-              : state.sessionStats.previousStreak >= 3
-                ? t('feedback.streakLost', { lost: state.sessionStats.previousStreak, required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })
-                : t('feedback.streakReset', { required: unlockDetail.streak.required, levelName: getNextLevelDisplayName() })
-            }
-          </div>
-        </div>
-      )}
-
-      {isFeedback && justUnlocked && unlockDetail && (
-        <div className="feedback-progress-section">
-          <div className="feedback-unlock-message">
-            {t('feedback.levelUnlocked', { levelName: getNextLevelDisplayName() })}
-          </div>
-        </div>
-      )}
 
       <div className="button-container">
         {state.currentState === 'READY' && (
