@@ -23,7 +23,8 @@ export { LEVEL_CONFIGS as DIFFICULTY_LEVELS, getLevelConfigById as getLevelById,
 
 // Re-export utility functions from LocalLevelService for backwards compatibility
 import { localLevelService } from '../services/LocalLevelService';
-import type { UserProgress } from './levels';
+import { LEVEL_CONFIGS, DEFAULT_LEVEL_ID } from '../config/levels';
+import type { UserProgress, LevelProgress } from './levels';
 
 /**
  * @deprecated Use localLevelService.isUnlocked() instead
@@ -57,8 +58,7 @@ export function getUnlockProgress(levelId: string, progress: UserProgress): numb
  * @deprecated Use localProgressService.getProgress() with createInitialProgress
  */
 export function createInitialProgress(): UserProgress {
-  const { LEVEL_CONFIGS, DEFAULT_LEVEL_ID } = require('../config/levels');
-  const levels: Record<string, import('./levels').LevelProgress> = {};
+  const levels: Record<string, LevelProgress> = {};
 
   for (const level of LEVEL_CONFIGS) {
     levels[level.id] = {
