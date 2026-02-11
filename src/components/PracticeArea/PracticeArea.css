@@ -183,6 +183,34 @@
   font-weight: 500;
 }
 
+/* === VOLUME INDICATOR === */
+.volume-indicator-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volume-indicator {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-primary-glow), var(--color-primary));
+  opacity: 0.35;
+  transition: transform 0.08s ease-out;
+  will-change: transform;
+}
+
+.volume-icon {
+  position: relative;
+  font-size: 2.5rem;
+  line-height: 1;
+  z-index: 1;
+}
+
 /* === RECORDING TIMER === */
 .recording-timer-container {
   width: 100%;

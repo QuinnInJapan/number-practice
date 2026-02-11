@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '../../store/AppContext';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition';
+import { useMicrophoneVolume } from '../../hooks/useMicrophoneVolume';
 import { useNumberGenerator, useProgressService, useLevelService } from '../../contexts/ServiceContext';
 import { useTranslation } from '../../i18n';
 import { NumberConverter } from '../../services/NumberConverter';
@@ -22,6 +23,8 @@ export function PracticeArea() {
   const progressService = useProgressService();
   const levelService = useLevelService();
   const { t, uiLanguage } = useTranslation();
+  const isRecording = state.currentState === 'LISTENING';
+  const micVolume = useMicrophoneVolume(isRecording);
   const [showHeatmap, setShowHeatmap] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
 
@@ -213,7 +216,17 @@ export function PracticeArea() {
 
       <div className="question-container">
         <div className="status-area">
-          <div className={`status-icon ${status.pulse ? 'pulse' : ''}`}>{status.icon}</div>
+          {isRecording ? (
+            <div className="volume-indicator-wrapper">
+              <div
+                className="volume-indicator"
+                style={{ transform: `scale(${1 + micVolume * 1.2})` }}
+              />
+              <div className="volume-icon">🎤</div>
+            </div>
+          ) : (
+            <div className={`status-icon ${status.pulse ? 'pulse' : ''}`}>{status.icon}</div>
+          )}
           <div className="status-text">{status.text}</div>
         </div>
 
