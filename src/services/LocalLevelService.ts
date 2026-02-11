@@ -29,7 +29,11 @@ export class LocalLevelService implements ILevelService {
     // First level is always unlocked
     if (!level.unlock.requiredLevel) return true;
 
-    // Check if required level has met the streak criteria
+    // Once unlocked, always unlocked
+    const levelProgress = progress.levels[levelId];
+    if (levelProgress?.unlockedAt) return true;
+
+    // Check if required level currently meets the streak criteria (first-time unlock)
     const requiredProgress = progress.levels[level.unlock.requiredLevel];
     if (!requiredProgress) return false;
 
