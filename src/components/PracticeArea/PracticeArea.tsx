@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '../../store/AppContext';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition';
-import { useMicrophoneVolume } from '../../hooks/useMicrophoneVolume';
+import { useMicrophone } from '../../hooks/useMicrophoneVolume';
 import { useNumberGenerator, useProgressService, useLevelService } from '../../contexts/ServiceContext';
 import { useTranslation } from '../../i18n';
 import { NumberConverter } from '../../services/NumberConverter';
@@ -10,6 +10,7 @@ import { Validator } from '../../services/Validator';
 import { LEVEL_RECORDING_TIMEOUTS, DEFAULT_RECORDING_TIMEOUT } from '../../config/levels';
 import { AttemptHeatmap } from '../AttemptHeatmap/AttemptHeatmap';
 import { PracticeNav } from '../PracticeNav/PracticeNav';
+import { Waveform } from '../Waveform/Waveform';
 import './PracticeArea.css';
 
 const converter = new NumberConverter();
@@ -24,7 +25,7 @@ export function PracticeArea() {
   const levelService = useLevelService();
   const { t, uiLanguage } = useTranslation();
   const isRecording = state.currentState === 'LISTENING';
-  const micVolume = useMicrophoneVolume(isRecording);
+  const { analyserRef } = useMicrophone(isRecording);
   const [showHeatmap, setShowHeatmap] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
 
@@ -216,18 +217,11 @@ export function PracticeArea() {
 
       <div className="question-container">
         <div className="status-area">
-          {isRecording ? (
-            <div className="volume-indicator-wrapper">
-              <div
-                className="volume-indicator"
-                style={{ transform: `scale(${1 + micVolume * 1.2})` }}
-              />
-              <div className="volume-icon">🎤</div>
-            </div>
-          ) : (
-            <div className={`status-icon ${status.pulse ? 'pulse' : ''}`}>{status.icon}</div>
-          )}
+          <div className={`status-icon ${status.pulse ? 'pulse' : ''}`}>{status.icon}</div>
           <div className="status-text">{status.text}</div>
+          {isRecording && (
+            <Waveform analyserRef={analyserRef} active={isRecording} />
+          )}
         </div>
 
         {state.currentState === 'LISTENING' && (
