@@ -1,0 +1,274 @@
+/* === PRACTICE AREA === */
+.practice-area {
+  text-align: center;
+  animation: fadeInUp 0.4s var(--ease-out-expo) both;
+}
+
+/* === HEADER BAR === */
+.practice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.header-info {
+  text-align: left;
+}
+
+.mode-display {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.level-display {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.change-level-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-dim);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: transform 0.15s var(--ease-spring),
+              color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.change-level-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+/* === SESSION STATS === */
+.session-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.stat-item {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+}
+
+.stat-item.streak {
+  background: linear-gradient(135deg, var(--color-streak-start), var(--color-streak-end));
+  color: white;
+  font-weight: 600;
+  border: none;
+  animation: streakGlow 2s ease-in-out infinite;
+}
+
+@keyframes streakGlow {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 12px rgba(249, 115, 22, 0.3); }
+}
+
+/* === UNLOCK PROGRESS === */
+.unlock-progress {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dim);
+}
+
+.unlock-pending {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+.unlock-done {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-success-dim);
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-pill);
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.unlock-final {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-primary-dim);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* === QUESTION CONTAINER === */
+.question-container {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.question-container::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 4s ease;
+}
+
+/* === STATUS === */
+.status-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.status-icon {
+  font-size: 4rem;
+  line-height: 1;
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.status-icon.pulse {
+  animation: iconPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 12px var(--color-primary-glow));
+  }
+}
+
+.status-text {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* === RECORDING TIMER === */
+.recording-timer-container {
+  width: 100%;
+  height: 6px;
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin-top: var(--spacing-lg);
+}
+
+.recording-timer-bar {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--radius-pill);
+  transform-origin: left center;
+  will-change: transform;
+  animation: timerShrink var(--timer-duration) linear forwards,
+             timerColorShift var(--timer-duration) linear forwards,
+             timerGlow var(--timer-duration) linear forwards;
+}
+
+@keyframes timerShrink {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+@keyframes timerColorShift {
+  0% { background: var(--color-primary); }
+  60% { background: var(--color-warning); }
+  100% { background: var(--color-error); }
+}
+
+@keyframes timerGlow {
+  0% { box-shadow: 0 0 4px var(--color-primary-glow); }
+  60% { box-shadow: 0 0 8px rgba(217, 119, 6, 0.3); }
+  100% { box-shadow: 0 0 10px var(--color-error-glow); }
+}
+
+/* === TRANSCRIPT === */
+.transcript-area {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+  animation: fadeInUp 0.3s var(--ease-out-expo) both;
+}
+
+.transcript-text {
+  font-size: var(--font-size-xl);
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+/* === HEATMAP SECTION === */
+.heatmap-section {
+  margin-top: var(--spacing-lg);
+}
+
+.heatmap-toggle {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-dim);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  margin-bottom: var(--spacing-md);
+}
+
+.heatmap-toggle:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+@media (max-width: 600px) {
+  .practice-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .header-info {
+    text-align: center;
+    width: 100%;
+  }
+
+  .change-level-button {
+    width: 100%;
+  }
+}

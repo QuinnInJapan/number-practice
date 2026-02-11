@@ -1,0 +1,159 @@
+/* === ATTEMPT HEATMAP === */
+.heatmap-container {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-md);
+  animation: fadeInUp 0.3s var(--ease-out-expo) both;
+}
+
+.heatmap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.heatmap-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* === EMPTY STATE === */
+.heatmap-empty {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  color: var(--color-text-dim);
+  font-size: var(--font-size-sm);
+}
+
+/* === LEGEND === */
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.legend-swatch.correct {
+  background: var(--color-success);
+}
+
+.legend-swatch.incorrect {
+  background: var(--color-error);
+}
+
+/* === SESSION LIST === */
+.session-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.session-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.session-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+}
+
+.session-time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+  white-space: nowrap;
+}
+
+.session-meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+}
+
+.session-level {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.session-score {
+  color: var(--color-text-dim);
+}
+
+.session-squares {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.attempt-square {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  transition: transform 0.15s var(--ease-spring);
+}
+
+.attempt-square:hover {
+  transform: scale(1.4);
+  z-index: 1;
+}
+
+.attempt-square.correct {
+  background: var(--color-success);
+}
+
+.attempt-square.incorrect {
+  background: var(--color-error);
+}
+
+/* === STATS === */
+.heatmap-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.heatmap-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  min-width: 70px;
+}
+
+.heatmap-stat-value {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.heatmap-stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}

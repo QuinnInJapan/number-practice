@@ -1,0 +1,155 @@
+/* === PRACTICE NAV === */
+.practice-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* === SECTIONS === */
+.nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.nav-section-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-dim);
+  padding-left: 2px;
+}
+
+/* === UNLOCK PROGRESS === */
+.nav-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: var(--spacing-xs);
+}
+
+.nav-progress-bar-container {
+  height: 4px;
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.nav-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
+  border-radius: var(--radius-pill);
+  transition: width 0.4s var(--ease-out-expo);
+}
+
+.nav-progress-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+}
+
+/* === MODE TOGGLE === */
+.mode-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+}
+
+.mode-pill {
+  flex: 1;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text-dim);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s var(--ease-spring);
+}
+
+.mode-pill:hover:not(.active) {
+  color: var(--color-text);
+  background: var(--color-surface-hover);
+}
+
+.mode-pill.active {
+  background: var(--color-primary);
+  color: white;
+  font-weight: 600;
+}
+
+.mode-pill:active {
+  transform: scale(0.97);
+}
+
+/* === LEVEL LIST === */
+.level-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  padding: var(--spacing-xs) 0;
+}
+
+.level-chip {
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-dim);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.15s var(--ease-spring),
+              border-color 0.2s ease,
+              background 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.level-chip:hover:not(.locked) {
+  transform: translateY(-1px);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.level-chip.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 0 8px var(--color-primary-glow);
+}
+
+.level-chip.mastered:not(.active) {
+  border-color: var(--color-success);
+  color: var(--color-success);
+  background: var(--color-success-dim);
+}
+
+.level-chip.locked {
+  opacity: 0.4;
+  cursor: not-allowed;
+  font-size: 0.65rem;
+}
+
+@media (max-width: 600px) {
+  .practice-nav {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .level-chip {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+  }
+}

@@ -1,0 +1,271 @@
+/* === LIGHT THEME (default) === */
+:root {
+  /* Base surfaces */
+  --color-bg: #faf9f6;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #f5f3ef;
+  --color-surface-hover: #eeece6;
+
+  /* Text */
+  --color-text: #1a1820;
+  --color-text-muted: #6b6880;
+  --color-text-dim: #9a97a8;
+  --color-border: #e0ddd6;
+
+  /* Primary — warm amber/gold */
+  --color-primary: #d48a18;
+  --color-primary-hover: #e09820;
+  --color-primary-dim: rgba(212, 138, 24, 0.12);
+  --color-primary-glow: rgba(212, 138, 24, 0.3);
+
+  /* Success — rich emerald */
+  --color-success: #16a34a;
+  --color-success-dim: rgba(22, 163, 74, 0.1);
+  --color-success-glow: rgba(22, 163, 74, 0.35);
+
+  /* Error — warm red */
+  --color-error: #dc2626;
+  --color-error-dim: rgba(220, 38, 38, 0.08);
+  --color-error-glow: rgba(220, 38, 38, 0.35);
+
+  /* Warning */
+  --color-warning: #d97706;
+
+  /* Accent — violet */
+  --color-accent: #7c3aed;
+  --color-accent-dim: rgba(124, 58, 237, 0.1);
+
+  /* Streak fire */
+  --color-streak-start: #ea580c;
+  --color-streak-end: #dc2626;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Radii */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-pill: 100px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-glow-primary: 0 0 16px rgba(212, 138, 24, 0.2);
+  --shadow-glow-success: 0 0 16px rgba(22, 163, 74, 0.2);
+  --shadow-glow-error: 0 0 16px rgba(220, 38, 38, 0.2);
+
+  /* Typography */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3.5rem;
+
+  /* Animation curves */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === DARK THEME === */
+[data-theme="dark"] {
+  --color-bg: #0f0f1a;
+  --color-surface: #1a1a2e;
+  --color-surface-elevated: #222240;
+  --color-surface-hover: #2a2a4a;
+
+  --color-text: #e8e6f0;
+  --color-text-muted: #8a86a0;
+  --color-text-dim: #5c587a;
+  --color-border: #2e2b4a;
+
+  --color-primary: #f0a030;
+  --color-primary-hover: #f5b84d;
+  --color-primary-dim: rgba(240, 160, 48, 0.15);
+  --color-primary-glow: rgba(240, 160, 48, 0.4);
+
+  --color-success: #34d399;
+  --color-success-dim: rgba(52, 211, 153, 0.12);
+  --color-success-glow: rgba(52, 211, 153, 0.5);
+
+  --color-error: #f87171;
+  --color-error-dim: rgba(248, 113, 113, 0.12);
+  --color-error-glow: rgba(248, 113, 113, 0.5);
+
+  --color-warning: #fbbf24;
+
+  --color-accent: #a78bfa;
+  --color-accent-dim: rgba(167, 139, 250, 0.15);
+
+  --color-streak-start: #f97316;
+  --color-streak-end: #ef4444;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow-primary: 0 0 20px rgba(240, 160, 48, 0.25);
+  --shadow-glow-success: 0 0 20px rgba(52, 211, 153, 0.3);
+  --shadow-glow-error: 0 0 20px rgba(248, 113, 113, 0.3);
+}
+
+/* === BODY === */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(167, 139, 250, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(240, 160, 48, 0.03) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* === SHARED KEYFRAMES === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === PRIMARY BUTTON (gold/amber) === */
+.primary-button {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  color: #1a1820;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: transform 0.15s var(--ease-spring),
+              box-shadow 0.2s ease,
+              filter 0.2s ease;
+  box-shadow: 0 4px 12px var(--color-primary-glow),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px var(--color-primary-glow),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  filter: brightness(1.05);
+}
+
+.primary-button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 8px var(--color-primary-dim);
+  transition-duration: 0.06s;
+}
+
+/* === SECONDARY BUTTON (ghost + accent) === */
+.secondary-button {
+  background: transparent;
+  color: var(--color-accent);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  border: 1.5px solid var(--color-accent);
+  transition: transform 0.15s var(--ease-spring),
+              background-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.secondary-button:hover {
+  background: var(--color-accent-dim);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.12);
+}
+
+.secondary-button:active {
+  transform: translateY(1px) scale(0.97);
+  transition-duration: 0.06s;
+}
+
+/* === STOP BUTTON (coral-red) === */
+.stop-button {
+  background: linear-gradient(135deg, var(--color-error) 0%, #ef4444 100%);
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  transition: transform 0.15s var(--ease-spring),
+              box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px var(--color-error-glow),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  animation: stopPulse 2s ease-in-out infinite;
+}
+
+@keyframes stopPulse {
+  0%, 100% { box-shadow: 0 4px 12px var(--color-error-glow); }
+  50% { box-shadow: 0 4px 20px var(--color-error-glow), 0 0 8px var(--color-error-dim); }
+}
+
+.stop-button:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.stop-button:active {
+  transform: translateY(1px) scale(0.97);
+  transition-duration: 0.06s;
+  animation: none;
+}
+
+/* === BUTTON CONTAINER === */
+.button-container {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--spacing-xl);
+}
+
+/* === NUMBER DISPLAY === */
+.number-display {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: 'SF Mono', Monaco, 'Consolas', monospace;
+  text-shadow: 0 0 12px var(--color-primary-glow);
+}
+
+/* === LABELS === */
+.label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}

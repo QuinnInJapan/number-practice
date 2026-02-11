@@ -1,0 +1,1029 @@
+{
+  "metadata": {
+    "generated": "2026-01-28T02:12:26.313Z",
+    "version": "2.0",
+    "description": "Numbers 1000+ only. Difficulty based on number of units (sen/man/oku/cho)",
+    "stats": {
+      "total": 201,
+      "byDifficulty": {
+        "simple": 70,
+        "medium": 53,
+        "hard": 39,
+        "expert": 39
+      },
+      "byMagnitude": {
+        "thousands": 41,
+        "man": 60,
+        "oku": 52,
+        "cho": 48
+      }
+    }
+  },
+  "problems": [
+    {
+      "id": 1,
+      "number": 1000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 2,
+      "number": 1001,
+      "difficulty": "simple"
+    },
+    {
+      "id": 3,
+      "number": 1019,
+      "difficulty": "simple"
+    },
+    {
+      "id": 4,
+      "number": 1328,
+      "difficulty": "simple"
+    },
+    {
+      "id": 5,
+      "number": 1626,
+      "difficulty": "simple"
+    },
+    {
+      "id": 6,
+      "number": 1662,
+      "difficulty": "simple"
+    },
+    {
+      "id": 7,
+      "number": 2000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 8,
+      "number": 2249,
+      "difficulty": "simple"
+    },
+    {
+      "id": 9,
+      "number": 2347,
+      "difficulty": "simple"
+    },
+    {
+      "id": 10,
+      "number": 2647,
+      "difficulty": "simple"
+    },
+    {
+      "id": 11,
+      "number": 3000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 12,
+      "number": 3446,
+      "difficulty": "simple"
+    },
+    {
+      "id": 13,
+      "number": 4000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 14,
+      "number": 4598,
+      "difficulty": "simple"
+    },
+    {
+      "id": 15,
+      "number": 5000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 16,
+      "number": 5005,
+      "difficulty": "simple"
+    },
+    {
+      "id": 17,
+      "number": 5402,
+      "difficulty": "simple"
+    },
+    {
+      "id": 18,
+      "number": 5418,
+      "difficulty": "simple"
+    },
+    {
+      "id": 19,
+      "number": 5831,
+      "difficulty": "simple"
+    },
+    {
+      "id": 20,
+      "number": 6000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 21,
+      "number": 6163,
+      "difficulty": "simple"
+    },
+    {
+      "id": 22,
+      "number": 6290,
+      "difficulty": "simple"
+    },
+    {
+      "id": 23,
+      "number": 6319,
+      "difficulty": "simple"
+    },
+    {
+      "id": 24,
+      "number": 6345,
+      "difficulty": "simple"
+    },
+    {
+      "id": 25,
+      "number": 6362,
+      "difficulty": "simple"
+    },
+    {
+      "id": 26,
+      "number": 6525,
+      "difficulty": "simple"
+    },
+    {
+      "id": 27,
+      "number": 7000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 28,
+      "number": 7157,
+      "difficulty": "simple"
+    },
+    {
+      "id": 29,
+      "number": 7304,
+      "difficulty": "simple"
+    },
+    {
+      "id": 30,
+      "number": 7912,
+      "difficulty": "simple"
+    },
+    {
+      "id": 31,
+      "number": 7939,
+      "difficulty": "simple"
+    },
+    {
+      "id": 32,
+      "number": 8000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 33,
+      "number": 8036,
+      "difficulty": "simple"
+    },
+    {
+      "id": 34,
+      "number": 8420,
+      "difficulty": "simple"
+    },
+    {
+      "id": 35,
+      "number": 8473,
+      "difficulty": "simple"
+    },
+    {
+      "id": 36,
+      "number": 8829,
+      "difficulty": "simple"
+    },
+    {
+      "id": 37,
+      "number": 9000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 38,
+      "number": 9086,
+      "difficulty": "simple"
+    },
+    {
+      "id": 39,
+      "number": 9174,
+      "difficulty": "simple"
+    },
+    {
+      "id": 40,
+      "number": 9228,
+      "difficulty": "simple"
+    },
+    {
+      "id": 41,
+      "number": 9305,
+      "difficulty": "simple"
+    },
+    {
+      "id": 42,
+      "number": 10000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 43,
+      "number": 10001,
+      "difficulty": "simple"
+    },
+    {
+      "id": 44,
+      "number": 11000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 45,
+      "number": 20000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 46,
+      "number": 30000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 47,
+      "number": 49024,
+      "difficulty": "medium"
+    },
+    {
+      "id": 48,
+      "number": 50000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 49,
+      "number": 53000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 50,
+      "number": 67794,
+      "difficulty": "medium"
+    },
+    {
+      "id": 51,
+      "number": 98000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 52,
+      "number": 100000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 53,
+      "number": 100001,
+      "difficulty": "simple"
+    },
+    {
+      "id": 54,
+      "number": 200005,
+      "difficulty": "simple"
+    },
+    {
+      "id": 55,
+      "number": 300800,
+      "difficulty": "simple"
+    },
+    {
+      "id": 56,
+      "number": 436884,
+      "difficulty": "medium"
+    },
+    {
+      "id": 57,
+      "number": 500000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 58,
+      "number": 500123,
+      "difficulty": "simple"
+    },
+    {
+      "id": 59,
+      "number": 1000001,
+      "difficulty": "simple"
+    },
+    {
+      "id": 60,
+      "number": 1003362,
+      "difficulty": "medium"
+    },
+    {
+      "id": 61,
+      "number": 1180323,
+      "difficulty": "simple"
+    },
+    {
+      "id": 62,
+      "number": 1271474,
+      "difficulty": "medium"
+    },
+    {
+      "id": 63,
+      "number": 1571661,
+      "difficulty": "medium"
+    },
+    {
+      "id": 64,
+      "number": 2274983,
+      "difficulty": "medium"
+    },
+    {
+      "id": 65,
+      "number": 2318419,
+      "difficulty": "medium"
+    },
+    {
+      "id": 66,
+      "number": 2608172,
+      "difficulty": "medium"
+    },
+    {
+      "id": 67,
+      "number": 2972502,
+      "difficulty": "medium"
+    },
+    {
+      "id": 68,
+      "number": 3000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 69,
+      "number": 3546668,
+      "difficulty": "medium"
+    },
+    {
+      "id": 70,
+      "number": 3638168,
+      "difficulty": "medium"
+    },
+    {
+      "id": 71,
+      "number": 3811127,
+      "difficulty": "medium"
+    },
+    {
+      "id": 72,
+      "number": 3942509,
+      "difficulty": "medium"
+    },
+    {
+      "id": 73,
+      "number": 4170944,
+      "difficulty": "simple"
+    },
+    {
+      "id": 74,
+      "number": 4513209,
+      "difficulty": "medium"
+    },
+    {
+      "id": 75,
+      "number": 4528608,
+      "difficulty": "medium"
+    },
+    {
+      "id": 76,
+      "number": 4530001,
+      "difficulty": "simple"
+    },
+    {
+      "id": 77,
+      "number": 4576970,
+      "difficulty": "medium"
+    },
+    {
+      "id": 78,
+      "number": 5036053,
+      "difficulty": "medium"
+    },
+    {
+      "id": 79,
+      "number": 5733512,
+      "difficulty": "medium"
+    },
+    {
+      "id": 80,
+      "number": 5806989,
+      "difficulty": "medium"
+    },
+    {
+      "id": 81,
+      "number": 5936376,
+      "difficulty": "medium"
+    },
+    {
+      "id": 82,
+      "number": 6305858,
+      "difficulty": "medium"
+    },
+    {
+      "id": 83,
+      "number": 6978496,
+      "difficulty": "medium"
+    },
+    {
+      "id": 84,
+      "number": 7677896,
+      "difficulty": "medium"
+    },
+    {
+      "id": 85,
+      "number": 7679758,
+      "difficulty": "medium"
+    },
+    {
+      "id": 86,
+      "number": 7692055,
+      "difficulty": "medium"
+    },
+    {
+      "id": 87,
+      "number": 7749997,
+      "difficulty": "medium"
+    },
+    {
+      "id": 88,
+      "number": 7778518,
+      "difficulty": "medium"
+    },
+    {
+      "id": 89,
+      "number": 8000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 90,
+      "number": 8003000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 91,
+      "number": 8528948,
+      "difficulty": "medium"
+    },
+    {
+      "id": 92,
+      "number": 8598542,
+      "difficulty": "medium"
+    },
+    {
+      "id": 93,
+      "number": 8632474,
+      "difficulty": "medium"
+    },
+    {
+      "id": 94,
+      "number": 9022860,
+      "difficulty": "medium"
+    },
+    {
+      "id": 95,
+      "number": 9062952,
+      "difficulty": "medium"
+    },
+    {
+      "id": 96,
+      "number": 9096682,
+      "difficulty": "medium"
+    },
+    {
+      "id": 97,
+      "number": 9458428,
+      "difficulty": "medium"
+    },
+    {
+      "id": 98,
+      "number": 9569151,
+      "difficulty": "medium"
+    },
+    {
+      "id": 99,
+      "number": 9991560,
+      "difficulty": "medium"
+    },
+    {
+      "id": 100,
+      "number": 30000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 101,
+      "number": 80000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 102,
+      "number": 100000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 103,
+      "number": 100000001,
+      "difficulty": "simple"
+    },
+    {
+      "id": 104,
+      "number": 198213265,
+      "difficulty": "hard"
+    },
+    {
+      "id": 105,
+      "number": 200003000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 106,
+      "number": 300050000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 107,
+      "number": 446828974,
+      "difficulty": "hard"
+    },
+    {
+      "id": 108,
+      "number": 500000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 109,
+      "number": 500000123,
+      "difficulty": "simple"
+    },
+    {
+      "id": 110,
+      "number": 723000000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 111,
+      "number": 800005000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 112,
+      "number": 1000000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 113,
+      "number": 1128835440,
+      "difficulty": "hard"
+    },
+    {
+      "id": 114,
+      "number": 1304460922,
+      "difficulty": "medium"
+    },
+    {
+      "id": 115,
+      "number": 1338914782,
+      "difficulty": "hard"
+    },
+    {
+      "id": 116,
+      "number": 1574053636,
+      "difficulty": "hard"
+    },
+    {
+      "id": 117,
+      "number": 1578908224,
+      "difficulty": "hard"
+    },
+    {
+      "id": 118,
+      "number": 1670471639,
+      "difficulty": "hard"
+    },
+    {
+      "id": 119,
+      "number": 1708686143,
+      "difficulty": "hard"
+    },
+    {
+      "id": 120,
+      "number": 2300120000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 121,
+      "number": 2357493667,
+      "difficulty": "hard"
+    },
+    {
+      "id": 122,
+      "number": 2394682659,
+      "difficulty": "hard"
+    },
+    {
+      "id": 123,
+      "number": 2715858147,
+      "difficulty": "hard"
+    },
+    {
+      "id": 124,
+      "number": 2837238098,
+      "difficulty": "hard"
+    },
+    {
+      "id": 125,
+      "number": 3769945144,
+      "difficulty": "hard"
+    },
+    {
+      "id": 126,
+      "number": 4108218384,
+      "difficulty": "hard"
+    },
+    {
+      "id": 127,
+      "number": 4442463812,
+      "difficulty": "hard"
+    },
+    {
+      "id": 128,
+      "number": 5038681172,
+      "difficulty": "hard"
+    },
+    {
+      "id": 129,
+      "number": 5071377786,
+      "difficulty": "hard"
+    },
+    {
+      "id": 130,
+      "number": 5076712629,
+      "difficulty": "hard"
+    },
+    {
+      "id": 131,
+      "number": 5186444750,
+      "difficulty": "hard"
+    },
+    {
+      "id": 132,
+      "number": 5624403080,
+      "difficulty": "hard"
+    },
+    {
+      "id": 133,
+      "number": 6395796513,
+      "difficulty": "hard"
+    },
+    {
+      "id": 134,
+      "number": 6637763038,
+      "difficulty": "hard"
+    },
+    {
+      "id": 135,
+      "number": 6713286869,
+      "difficulty": "hard"
+    },
+    {
+      "id": 136,
+      "number": 7131976361,
+      "difficulty": "hard"
+    },
+    {
+      "id": 137,
+      "number": 7134815746,
+      "difficulty": "hard"
+    },
+    {
+      "id": 138,
+      "number": 7327012694,
+      "difficulty": "hard"
+    },
+    {
+      "id": 139,
+      "number": 7520405604,
+      "difficulty": "hard"
+    },
+    {
+      "id": 140,
+      "number": 7576690872,
+      "difficulty": "medium"
+    },
+    {
+      "id": 141,
+      "number": 7784480867,
+      "difficulty": "medium"
+    },
+    {
+      "id": 142,
+      "number": 8175411546,
+      "difficulty": "hard"
+    },
+    {
+      "id": 143,
+      "number": 8319165319,
+      "difficulty": "hard"
+    },
+    {
+      "id": 144,
+      "number": 8847211323,
+      "difficulty": "hard"
+    },
+    {
+      "id": 145,
+      "number": 8983834131,
+      "difficulty": "hard"
+    },
+    {
+      "id": 146,
+      "number": 9040536942,
+      "difficulty": "hard"
+    },
+    {
+      "id": 147,
+      "number": 9080236033,
+      "difficulty": "hard"
+    },
+    {
+      "id": 148,
+      "number": 9369044501,
+      "difficulty": "hard"
+    },
+    {
+      "id": 149,
+      "number": 9575937800,
+      "difficulty": "hard"
+    },
+    {
+      "id": 150,
+      "number": 9737629050,
+      "difficulty": "hard"
+    },
+    {
+      "id": 151,
+      "number": 9903311158,
+      "difficulty": "hard"
+    },
+    {
+      "id": 152,
+      "number": 30000000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 153,
+      "number": 80000000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 154,
+      "number": 1000000000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 155,
+      "number": 1000000000001,
+      "difficulty": "simple"
+    },
+    {
+      "id": 156,
+      "number": 2000000005000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 157,
+      "number": 3000012000000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 158,
+      "number": 5000000000000,
+      "difficulty": "simple"
+    },
+    {
+      "id": 159,
+      "number": 5002300000000,
+      "difficulty": "medium"
+    },
+    {
+      "id": 160,
+      "number": 7120000340000,
+      "difficulty": "hard"
+    },
+    {
+      "id": 161,
+      "number": 9223923259234,
+      "difficulty": "expert"
+    },
+    {
+      "id": 162,
+      "number": 56166147634124,
+      "difficulty": "expert"
+    },
+    {
+      "id": 163,
+      "number": 68012265347621,
+      "difficulty": "expert"
+    },
+    {
+      "id": 164,
+      "number": 151410039237056,
+      "difficulty": "expert"
+    },
+    {
+      "id": 165,
+      "number": 154456732214780,
+      "difficulty": "expert"
+    },
+    {
+      "id": 166,
+      "number": 158652507980285,
+      "difficulty": "hard"
+    },
+    {
+      "id": 167,
+      "number": 184819943614268,
+      "difficulty": "expert"
+    },
+    {
+      "id": 168,
+      "number": 195127366737108,
+      "difficulty": "expert"
+    },
+    {
+      "id": 169,
+      "number": 205349396917361,
+      "difficulty": "expert"
+    },
+    {
+      "id": 170,
+      "number": 210774701487873,
+      "difficulty": "expert"
+    },
+    {
+      "id": 171,
+      "number": 225361231474881,
+      "difficulty": "expert"
+    },
+    {
+      "id": 172,
+      "number": 250000000230230,
+      "difficulty": "medium"
+    },
+    {
+      "id": 173,
+      "number": 265736364891351,
+      "difficulty": "expert"
+    },
+    {
+      "id": 174,
+      "number": 267495299715861,
+      "difficulty": "expert"
+    },
+    {
+      "id": 175,
+      "number": 278738267296358,
+      "difficulty": "expert"
+    },
+    {
+      "id": 176,
+      "number": 280043424264693,
+      "difficulty": "expert"
+    },
+    {
+      "id": 177,
+      "number": 334308163457083,
+      "difficulty": "expert"
+    },
+    {
+      "id": 178,
+      "number": 362213755442665,
+      "difficulty": "expert"
+    },
+    {
+      "id": 179,
+      "number": 371564191142945,
+      "difficulty": "expert"
+    },
+    {
+      "id": 180,
+      "number": 403898570619424,
+      "difficulty": "expert"
+    },
+    {
+      "id": 181,
+      "number": 404561614664843,
+      "difficulty": "expert"
+    },
+    {
+      "id": 182,
+      "number": 429994485203719,
+      "difficulty": "expert"
+    },
+    {
+      "id": 183,
+      "number": 485481439752369,
+      "difficulty": "expert"
+    },
+    {
+      "id": 184,
+      "number": 492770340541603,
+      "difficulty": "expert"
+    },
+    {
+      "id": 185,
+      "number": 494515216847811,
+      "difficulty": "expert"
+    },
+    {
+      "id": 186,
+      "number": 501756236171689,
+      "difficulty": "expert"
+    },
+    {
+      "id": 187,
+      "number": 527884904623545,
+      "difficulty": "expert"
+    },
+    {
+      "id": 188,
+      "number": 530989145798313,
+      "difficulty": "expert"
+    },
+    {
+      "id": 189,
+      "number": 578871717846816,
+      "difficulty": "expert"
+    },
+    {
+      "id": 190,
+      "number": 620908383896570,
+      "difficulty": "expert"
+    },
+    {
+      "id": 191,
+      "number": 641769305272814,
+      "difficulty": "expert"
+    },
+    {
+      "id": 192,
+      "number": 648170383782462,
+      "difficulty": "expert"
+    },
+    {
+      "id": 193,
+      "number": 658486294944634,
+      "difficulty": "expert"
+    },
+    {
+      "id": 194,
+      "number": 660927437579604,
+      "difficulty": "expert"
+    },
+    {
+      "id": 195,
+      "number": 722675731877620,
+      "difficulty": "expert"
+    },
+    {
+      "id": 196,
+      "number": 812281399692800,
+      "difficulty": "expert"
+    },
+    {
+      "id": 197,
+      "number": 898984871773704,
+      "difficulty": "expert"
+    },
+    {
+      "id": 198,
+      "number": 909837193542485,
+      "difficulty": "expert"
+    },
+    {
+      "id": 199,
+      "number": 917783238105295,
+      "difficulty": "expert"
+    },
+    {
+      "id": 200,
+      "number": 984276027702962,
+      "difficulty": "expert"
+    },
+    {
+      "id": 201,
+      "number": 990410823842136,
+      "difficulty": "expert"
+    }
+  ]
+}
