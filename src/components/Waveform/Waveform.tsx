@@ -9,16 +9,21 @@ interface WaveformProps {
 const BAR_WIDTH = 3;
 const BAR_GAP = 2;
 const SAMPLE_INTERVAL_MS = 50;
+const LERP_SPEED = 0.18; // Smoothing factor per frame (~60fps)
 
 export function Waveform({ analyserRef, active }: WaveformProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rafRef = useRef(0);
   const barsRef = useRef<number[]>([]);
+  const displayBarsRef = useRef<number[]>([]);
   const lastSampleRef = useRef(0);
+  const smoothVolumeRef = useRef(0);
 
   useEffect(() => {
     if (!active) {
       barsRef.current = [];
+      displayBarsRef.current = [];
+      smoothVolumeRef.current = 0;
       return;
     }
 
@@ -36,28 +41,42 @@ export function Waveform({ analyserRef, active }: WaveformProps) {
       const analyser = analyserRef.current;
       if (!analyser || !canvas || !ctx) return;
 
-      // Sample volume at fixed intervals
+      // Read raw volume every frame for smooth interpolation
+      const dataArray = new Uint8Array(analyser.fftSize);
+      analyser.getByteTimeDomainData(dataArray);
+
+      let sum = 0;
+      for (let i = 0; i < dataArray.length; i++) {
+        const v = (dataArray[i] - 128) / 128;
+        sum += v * v;
+      }
+      const rms = Math.sqrt(sum / dataArray.length);
+      const rawVolume = Math.min(rms / 0.35, 1);
+
+      // Smooth toward raw volume
+      smoothVolumeRef.current += (rawVolume - smoothVolumeRef.current) * LERP_SPEED;
+
+      // Commit a new bar at fixed intervals
       if (time - lastSampleRef.current >= SAMPLE_INTERVAL_MS) {
         lastSampleRef.current = time;
 
-        const dataArray = new Uint8Array(analyser.fftSize);
-        analyser.getByteTimeDomainData(dataArray);
-
-        // Compute RMS volume
-        let sum = 0;
-        for (let i = 0; i < dataArray.length; i++) {
-          const v = (dataArray[i] - 128) / 128;
-          sum += v * v;
-        }
-        const rms = Math.sqrt(sum / dataArray.length);
-        const volume = Math.min(rms / 0.35, 1);
-
-        // Calculate max bars that fit
         const maxBars = Math.floor(canvas.clientWidth / (BAR_WIDTH + BAR_GAP));
-        barsRef.current.push(volume);
+        barsRef.current.push(smoothVolumeRef.current);
+        displayBarsRef.current.push(0); // Start at 0 — will lerp up
         if (barsRef.current.length > maxBars) {
           barsRef.current.shift();
+          displayBarsRef.current.shift();
         }
+      }
+
+      // Update the newest committed bar to track live volume
+      if (barsRef.current.length > 0) {
+        barsRef.current[barsRef.current.length - 1] = smoothVolumeRef.current;
+      }
+
+      // Lerp display bars toward target bars
+      for (let i = 0; i < displayBarsRef.current.length; i++) {
+        displayBarsRef.current[i] += (barsRef.current[i] - displayBarsRef.current[i]) * LERP_SPEED;
       }
 
       // Draw
@@ -73,7 +92,7 @@ export function Waveform({ analyserRef, active }: WaveformProps) {
 
       ctx.clearRect(0, 0, width, height);
 
-      const bars = barsRef.current;
+      const bars = displayBarsRef.current;
       const totalBarWidth = BAR_WIDTH + BAR_GAP;
       const centerY = height / 2;
       const minBarHeight = 2;
@@ -89,7 +108,6 @@ export function Waveform({ analyserRef, active }: WaveformProps) {
         const x = startX + i * totalBarWidth;
         const y = centerY - barHeight / 2;
 
-        // Rounded bars via small radius
         const radius = BAR_WIDTH / 2;
         ctx.beginPath();
         ctx.roundRect(x, y, BAR_WIDTH, barHeight, radius);
