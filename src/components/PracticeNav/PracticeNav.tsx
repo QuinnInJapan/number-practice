@@ -106,7 +106,7 @@ export function PracticeNav() {
           })}
         </div>
 
-        {unlockDetail && !unlockDetail.streak.met && (
+        {unlockDetail && !unlockDetail.streak.met && state.currentState !== 'FEEDBACK' && (
           <div className="nav-progress">
             <div className="nav-progress-bar-container">
               <div
@@ -118,9 +118,13 @@ export function PracticeNav() {
               {t('practice.unlockPending', {
                 current: unlockDetail.streak.current,
                 required: unlockDetail.streak.required,
-                levelName: uiLanguage === 'ja'
-                  ? levelService.getLevelById(unlockDetail.nextLevelId)?.nameJa ?? unlockDetail.nextLevelName
-                  : unlockDetail.nextLevelName,
+                levelName: (() => {
+                  const nextLevel = levelService.getLevelById(unlockDetail.nextLevelId);
+                  const name = uiLanguage === 'ja'
+                    ? nextLevel?.nameJa ?? unlockDetail.nextLevelName
+                    : unlockDetail.nextLevelName;
+                  return nextLevel ? `Lv.${nextLevel.order} ${name}` : name;
+                })(),
               })}
             </span>
           </div>

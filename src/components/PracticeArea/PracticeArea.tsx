@@ -254,10 +254,11 @@ export function PracticeArea() {
 
   const getNextLevelDisplayName = () => {
     if (!unlockDetail) return '';
-    if (uiLanguage === 'ja') {
-      return levelService.getLevelById(unlockDetail.nextLevelId)?.nameJa ?? unlockDetail.nextLevelName;
-    }
-    return unlockDetail.nextLevelName;
+    const nextLevel = levelService.getLevelById(unlockDetail.nextLevelId);
+    const name = uiLanguage === 'ja'
+      ? nextLevel?.nameJa ?? unlockDetail.nextLevelName
+      : unlockDetail.nextLevelName;
+    return nextLevel ? `Lv.${nextLevel.order} ${name}` : name;
   };
 
   const getCurrentLevelDisplayName = () => {

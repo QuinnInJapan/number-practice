@@ -49,7 +49,7 @@ export const translations = {
     'practice.correct': '{correct}/{total} correct ({accuracy}%)',
     'practice.streak': '{count} streak',
     'practice.unlockDone': '{levelName} unlocked!',
-    'practice.unlockPending': '{current}/{required} to unlock {levelName}',
+    'practice.unlockPending': '{current}/{required} correct streak to unlock {levelName}',
     'practice.finalLevel': 'Final level',
 
     // Feedback area
@@ -70,9 +70,9 @@ export const translations = {
     'feedback.levelUnlocked': 'Level Unlocked: {levelName}!',
     'feedback.tryNewLevel': 'Try {levelName}!',
     'feedback.stayOn': 'Stay on {levelName}',
-    'feedback.streakProgress': '{current}/{required} to unlock {levelName}',
-    'feedback.streakReset': 'Streak reset — 0/{required} to unlock {levelName}',
-    'feedback.streakLost': 'Lost {lost} streak — 0/{required} to unlock {levelName}',
+    'feedback.streakProgress': '{current}/{required} correct streak to unlock {levelName}',
+    'feedback.streakReset': 'Streak reset — 0/{required} correct streak to unlock {levelName}',
+    'feedback.streakLost': 'Lost {lost} streak — 0/{required} correct streak to unlock {levelName}',
     'feedback.noSpeechDetected': 'No speech detected — try again',
 
     // Heatmap
@@ -157,7 +157,7 @@ export const translations = {
     'practice.correct': '{correct}/{total} 正解 ({accuracy}%)',
     'practice.streak': '{count} 連続',
     'practice.unlockDone': '{levelName} 解放済み！',
-    'practice.unlockPending': '{current}/{required} → {levelName}解放',
+    'practice.unlockPending': '連続正解 {current}/{required} → {levelName}解放',
     'practice.finalLevel': '最終レベル',
 
     // Feedback area
@@ -178,9 +178,9 @@ export const translations = {
     'feedback.levelUnlocked': 'レベル解放: {levelName}!',
     'feedback.tryNewLevel': '{levelName}に挑戦！',
     'feedback.stayOn': '{levelName}を続ける',
-    'feedback.streakProgress': '{current}/{required} → {levelName}解放',
+    'feedback.streakProgress': '連続正解 {current}/{required} → {levelName}解放',
     'feedback.streakReset': '連続正解リセット — 0/{required} → {levelName}解放',
-    'feedback.streakLost': '{lost}連続を失いました — 0/{required} → {levelName}解放',
+    'feedback.streakLost': '{lost}連続を失いました — 0/{required} 連続正解 → {levelName}解放',
     'feedback.noSpeechDetected': '音声が検出されませんでした — もう一度お試しください',
 
     // Heatmap
