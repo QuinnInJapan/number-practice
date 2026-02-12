@@ -66,8 +66,6 @@ function AppContent() {
   return (
     <div className="container">
       <header className="app-header">
-        <h1>{t('app.title')}</h1>
-        <p className="subtitle">{t('app.subtitle')}</p>
         <div className="header-controls">
           <button
             className={`toggle-switch ${uiLanguage === 'ja' ? 'toggled' : ''}`}
@@ -97,6 +95,8 @@ function AppContent() {
             </span>
           </button>
         </div>
+        <h1>{t('app.title')}</h1>
+        <p className="subtitle">{t('app.subtitle')}</p>
       </header>
 
       <main>
