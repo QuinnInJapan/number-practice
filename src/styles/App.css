@@ -107,22 +107,6 @@
   transform: translateX(16px);
 }
 
-/* Theme toggle — wider track for icon */
-.toggle-track-theme {
-  width: 44px;
-  height: 24px;
-}
-
-.toggle-track-theme .toggle-thumb {
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-}
-
-.toggle-switch.toggled .toggle-track-theme .toggle-thumb {
-  transform: translateX(20px);
-}
-
 /* Main content */
 main {
   flex: 1;

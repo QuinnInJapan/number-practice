@@ -88,11 +88,11 @@ function AppContent() {
             aria-checked={theme === 'dark'}
             aria-label="Theme"
           >
-            <span className="toggle-track toggle-track-theme">
-              <span className="toggle-thumb">
-                {theme === 'light' ? '\u2600\uFE0F' : '\uD83C\uDF19'}
-              </span>
+            <span className={`toggle-label ${theme === 'light' ? 'active' : ''}`}>{'\u2600\uFE0F'}</span>
+            <span className="toggle-track">
+              <span className="toggle-thumb" />
             </span>
+            <span className={`toggle-label ${theme === 'dark' ? 'active' : ''}`}>{'\uD83C\uDF19'}</span>
           </button>
         </div>
         <h1>{t('app.title')}</h1>
