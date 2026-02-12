@@ -88,14 +88,17 @@ export function PracticeNav() {
               !unlocked && 'locked',
             ].filter(Boolean).join(' ');
 
+            const description = uiLanguage === 'ja' ? level.descriptionJa : level.description;
+            const tooltip = unlocked
+              ? `${description}\ne.g. ${level.exampleNumbers.join(', ')}`
+              : undefined;
+
             return (
               <button
                 key={level.id}
                 className={classes}
                 onClick={() => handleLevelSwitch(level.id)}
-                title={unlocked
-                  ? `${level.order}. ${levelDisplayName}`
-                  : `${levelDisplayName} (${t('nav.locked')})`}
+                data-tooltip={tooltip}
                 disabled={!unlocked}
               >
                 {!unlocked && '🔒 '}

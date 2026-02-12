@@ -3,6 +3,7 @@ import { translations, type UILanguage, type TranslationKey } from './translatio
 
 interface LanguageContextType {
   uiLanguage: UILanguage;
+  setLanguage: (lang: UILanguage) => void;
   toggleLanguage: () => void;
   t: (key: TranslationKey, params?: Record<string, string | number>) => string;
 }
@@ -17,6 +18,11 @@ function getInitialLanguage(): UILanguage {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [uiLanguage, setUiLanguage] = useState<UILanguage>(getInitialLanguage);
+
+  const setLanguage = useCallback((lang: UILanguage) => {
+    localStorage.setItem('ui-language', lang);
+    setUiLanguage(lang);
+  }, []);
 
   const toggleLanguage = useCallback(() => {
     setUiLanguage(prev => {
@@ -37,7 +43,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [uiLanguage]);
 
   return (
-    <LanguageContext.Provider value={{ uiLanguage, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ uiLanguage, setLanguage, toggleLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppContext } from './store/AppContext';
 import { useTranslation } from './i18n';
 import { checkSpeechSupport } from './hooks/useSpeechRecognition';
@@ -18,17 +18,13 @@ function getInitialTheme(): 'light' | 'dark' {
 
 function AppContent() {
   const { dispatch } = useAppContext();
-  const { t, uiLanguage, toggleLanguage } = useTranslation();
+  const { t, uiLanguage, setLanguage } = useTranslation();
   const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('theme', theme);
   }, [theme]);
-
-  const toggleTheme = useCallback(() => {
-    setTheme(t => t === 'dark' ? 'light' : 'dark');
-  }, []);
 
   useEffect(() => {
     if (!checkSpeechSupport()) {
@@ -48,12 +44,14 @@ function AppContent() {
         <h1>{t('app.title')}</h1>
         <p className="subtitle">{t('app.subtitle')}</p>
         <div className="header-controls">
-          <button className="lang-toggle" onClick={toggleLanguage} aria-label="Toggle UI language">
-            {uiLanguage === 'en' ? '日本語' : 'EN'}
-          </button>
-          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-            {theme === 'dark' ? '☀️' : '🌙'}
-          </button>
+          <div className="header-segmented" role="group" aria-label="UI language">
+            <button className={uiLanguage === 'en' ? 'active' : ''} onClick={() => setLanguage('en')}>EN</button>
+            <button className={uiLanguage === 'ja' ? 'active' : ''} onClick={() => setLanguage('ja')}>JA</button>
+          </div>
+          <div className="header-segmented" role="group" aria-label="Theme">
+            <button className={theme === 'light' ? 'active' : ''} onClick={() => setTheme('light')}>☀️</button>
+            <button className={theme === 'dark' ? 'active' : ''} onClick={() => setTheme('dark')}>🌙</button>
+          </div>
         </div>
       </header>
 
