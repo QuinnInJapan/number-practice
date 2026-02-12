@@ -14,7 +14,6 @@
   margin-bottom: var(--spacing-2xl);
   padding-bottom: var(--spacing-lg);
   border-bottom: 1px solid var(--color-border);
-  position: relative;
 }
 
 .app-header h1 {
@@ -32,45 +31,93 @@
 
 /* Header controls */
 .header-controls {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-sm);
+}
+
+/* Toggle switch */
+.toggle-switch {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-pill);
 }
 
-/* Header segmented controls */
-.header-segmented {
-  display: flex;
+.toggle-switch:hover .toggle-track {
+  box-shadow: 0 0 0 2px var(--color-surface-hover);
+}
+
+.toggle-label {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-text-dim);
+  transition: color 0.25s ease, font-weight 0.25s ease;
+  min-width: 1.5em;
+  text-align: center;
+  user-select: none;
+}
+
+.toggle-label.active {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.toggle-track {
+  position: relative;
+  width: 36px;
+  height: 20px;
   background: var(--color-surface-elevated);
   border-radius: var(--radius-pill);
-  padding: 2px;
-  gap: 2px;
+  transition: background 0.3s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
 }
 
-.header-segmented button {
-  padding: 4px 8px;
-  border: none;
-  border-radius: var(--radius-pill);
-  background: transparent;
-  color: var(--color-text-dim);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-  line-height: 1.4;
-}
-
-.header-segmented button:hover:not(.active) {
-  color: var(--color-text);
-  background: var(--color-surface-hover);
-}
-
-.header-segmented button.active {
+.toggle-switch.toggled .toggle-track {
   background: var(--color-primary);
-  color: white;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s var(--ease-spring);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  line-height: 1;
+  box-shadow: var(--shadow-sm);
+}
+
+.toggle-switch.toggled .toggle-thumb {
+  transform: translateX(16px);
+}
+
+/* Theme toggle — wider track for icon */
+.toggle-track-theme {
+  width: 44px;
+  height: 24px;
+}
+
+.toggle-track-theme .toggle-thumb {
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+}
+
+.toggle-switch.toggled .toggle-track-theme .toggle-thumb {
+  transform: translateX(20px);
 }
 
 /* Main content */
